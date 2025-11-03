@@ -3,8 +3,11 @@ class Riset < Formula
 
   desc "Change macOS wallpapers at sunrise/sunset"
   homepage "https://github.com/eataturk/Wallpaper-Sunrise-Sunset"
-  url "https://github.com/eataturk/Wallpaper-Sunrise-Sunset/archive/refs/tags/v0.2.0.tar.gz"
-  sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+  url "https://github.com/eataturk/Wallpaper-Sunrise-Sunset.git",
+      using:    :git,
+      tag:      "v0.2.4",
+      revision: "5e2464ac14b3f4d8aec740d2ee2b89729607aa45"
+  version "0.2.4"
   license "MIT"
 
   depends_on "python@3.12"
@@ -25,11 +28,12 @@ class Riset < Formula
   end
 
   def post_install
-    ENV["SUNPROJECT_SCRIPTS_DIR"] = pkgshare/"scripts"
-    system bin/"sunproject", "post_install"
+    ENV["RISET_SCRIPTS_DIR"] = (pkgshare/"scripts").to_s
+    ENV["RISET_PYTHON_BIN"] = (libexec/"bin/python").to_s
+    system bin/"riset", "post_install"
   end
 
   test do
-    assert_match version.to_s, shell_output("#{bin}/sunproject --version")
+    assert_match version.to_s, shell_output("#{bin}/riset --version")
   end
 end

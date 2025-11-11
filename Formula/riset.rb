@@ -5,8 +5,8 @@ class Riset < Formula
   homepage "https://github.com/eataturk/Wallpaper-Sunrise-Sunset"
   url "https://github.com/eataturk/Wallpaper-Sunrise-Sunset.git",
       using:    :git,
-      revision: "7863e0ab845ca9a1f3fcab2929ca03b0700bcb84"
-  version "0.2.14"
+      revision: "4be4071c8c53f8ead4d688d3ecd9355329b82aab"
+  version "0.2.15"
   license "MIT"
 
   depends_on "python@3.12"
@@ -36,3 +36,4 @@ class Riset < Formula
     assert_match version.to_s, shell_output("#{bin}/riset --version")
   end
 end
+gi
